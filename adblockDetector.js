@@ -64,9 +64,6 @@
 	
 	var version = '1.0';
 	
-	// Credit to Easylist https://easylist.adblockplus.org/en/
-	// var blockListUrl = 'https://easylist-downloads.adblockplus.org/easylist_noadult.txt'
-	
 	var ofs = 'offset', cl = 'client';
 	var noop = function(){};
 	
