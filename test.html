@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+	<title>AdBlock</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+	<link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/default.min.css" rel="stylesheet">
+<style>
+	h5.bg-success,h5.bg-danger {
+		padding: 8px;
+		border: 1px solid #cccccc;
+		border-radius: 4px;
+		text-align: center;
+	}
+	.center {
+	   width: 300px;
+	   height: 300px;
+	   position: absolute;
+	   left: 50%;
+	   top: 50%; 
+	   margin-left: -150px;
+	   margin-top: -150px;
+	}
+	.below {
+	   width: 300px;
+	   height: 300px;
+	   position: absolute;
+	   left: 60%;
+	   top: 60%; 
+	   margin-left: -150px;
+	   margin-top: -150px;
+	}
+</style>
+</head>
+<body>
+		<div class="center">
+				<h5 class="bg-success" id="adb-not-enabled" style="display: none;">AdBlock is disabled</h5>
+				<h5 class="bg-danger" id="adb-enabled" style="display: none;">AdBlock is enabled</h5>
+		</div>
+		<div class="below">
+			<input TYPE="button" onClick="history.go(0)" VALUE="Reload Page">
+		</div>
+
+	<script src="./adblockDetector.js"></script>
+	<script>
+	// Configure the adblock detector
+	(function(){
+		var enabledEl = document.getElementById('adb-enabled');
+		var disabledEl = document.getElementById('adb-not-enabled');
+		function adBlockDetected() {
+			enabledEl.style.display = 'block';
+			disabledEl.style.display = 'none';
+		}
+		function adBlockNotDetected() {
+			disabledEl.style.display = 'block';
+			enabledEl.style.display = 'none';
+		}
+		
+		if(typeof window.adblockDetector === 'undefined') {
+			adBlockDetected();
+		} else {
+			window.adblockDetector.init(
+				{
+					debug: true,
+					found: function(){
+						adBlockDetected();
+					},
+					notFound: function(){
+						adBlockNotDetected();
+					}
+				}
+			);
+		}
+	}());
+	</script>
+		
+</body>
+</html>
