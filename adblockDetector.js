@@ -410,6 +410,7 @@
 		});
 		
 		log('adding bait node to DOM');
+
 		b.appendChild(baitNode);
 		
 		// touch these properties
@@ -433,7 +434,7 @@
 			log('recast bait');
 			castBait(bait || quickBait);
 		}
-		
+
 		if(typeof(bait) == 'string'){
 			log('invalid bait used', true);
 			if(clearBaitNode()){
@@ -444,21 +445,22 @@
 
 			return;
 		}
-		
+
 		if(timerIds.test > 0){
 			clearTimeout(timerIds.test);
 			timerIds.test = 0;
 		}
 		
 		// test for issues
-		
+
 		if(body.getAttribute('abp') !== null){
 			log('found adblock body attribute');
 			found = true;
 		}
-		
+
 		for(i=0;i<baitTriggers.nullProps.length;i++){
 			if(baitNode[baitTriggers.nullProps[i]] == null){
+				if(attemptNum>4)
 				found = true;
 				log('found adblock null attr: ' + baitTriggers.nullProps[i]);
 				break;
@@ -468,27 +470,29 @@
 			}
 		}
 		
-		
 		for(i=0;i<baitTriggers.zeroProps.length;i++){
 			if(found == true){
 				break;
 			}
 			if(baitNode[baitTriggers.zeroProps[i]] == 0){
+				if(attemptNum>4)
 				found = true;
 				log('found adblock zero attr: ' + baitTriggers.zeroProps[i]);
 			}
 		}
-		
+
 		if(window.getComputedStyle !== undefined) {
 			var baitTemp = window.getComputedStyle(baitNode, null);
 			if(baitTemp.getPropertyValue('display') == 'none'
 			|| baitTemp.getPropertyValue('visibility') == 'hidden') {
+				if(attemptNum>4)
 				found = true;
 				log('found adblock computedStyle indicator');
 			}
 		}
-		
+
 		testedOnce = true;
+		
 		if(found || attemptNum++ >= _options.maxLoop){
 			findResult = found;
 			log('exiting test loop - value: ' + findResult);
