@@ -22,7 +22,7 @@ Download the desired detection script and add it to your website. There are a fe
 | adblockDetector.js     | Adblocker detection script without Google Analytics module | 
 | adblockDetectorWithGA.js     | Adblocker detection script with Google Analytics module | 
 
-With AdBlockDetectionWithGA.js you are asked to mention your GA tracking id into the script on line no 82. When you are referencing thi script, it tracks certain events regarding AdBlock on user browser. You can view the details in the Google Analytics dashboard. Here is how to check whether user are using any adblock or not.
+With AdBlockDetectionWithGA.js you are asked to mention your GA tracking id into the script on line no 82. When you are referencing this script, it tracks certain events regarding AdBlock on user browser. You can view the details in the Google Analytics dashboard. Here is how to check whether user are using any adblock or not.
 
 - Sign into your Google Analytics account -> Go to your site -> Go to “Reporting” tab -> click “User Explorer” under Audience
 - Now from the List of users click any of it -> click on “Expand All” tab. This will show you all data/Event reported from user browser.
