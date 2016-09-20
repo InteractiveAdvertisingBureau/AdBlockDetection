@@ -27,7 +27,7 @@ With AdBlockDetectionWithGA.js you are asked to mention your GA tracking id into
 - Sign into your Google Analytics account -> Go to your site -> Go to “Reporting” tab -> click “User Explorer” under Audience
 - Now from the List of users click any of it -> click on “Expand All” tab. This will show you all data/Event reported from user browser.
  
-How to comprehend the data you see here?
+**How to comprehend the data you see here?**
 - There are two type of events -> ‘NotFound’ and ‘Found’. Where NotFound is fired when any ad blocking software is not found and Found is fired like wise.
 - Event Category is ‘Detect’ which means it’s a detection event.
 - Event action: Its ‘Found’ in case of ad block is present/enabled and ‘NotFound’ likewise.
