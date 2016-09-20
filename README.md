@@ -26,7 +26,7 @@ With AdBlockDetectionWithGA.js you are asked to mention your GA tracking id into
 
 - Sign into your Google Analytics account -> Go to your site -> Go to “Reporting” tab -> click “User Explorer” under Audience
 - Now from the List of users click any of it -> click on “Expand All” tab. This will show you all data/Event reported from user browser.
-- 
+ 
 ![alt text](https://s3.amazonaws.com/iab-tech-lab/images/eventfound.png "Event Found")
 ![alt text](https://s3.amazonaws.com/iab-tech-lab/images/eventnotfound.png "Event Not Found")
  
