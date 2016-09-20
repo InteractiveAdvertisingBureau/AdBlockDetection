@@ -29,10 +29,10 @@ With AdBlockDetectionWithGA.js you are asked to mention your GA tracking id into
  
 **How to comprehend the data you see here?**
 - There are two type of events -> ‘NotFound’ and ‘Found’. Where NotFound is fired when any ad blocking software is not found and Found is fired like wise.
-- Event Category is ‘Detect’ which means it’s a detection event.
-- Event action: Its ‘Found’ in case of ad block is present/enabled and ‘NotFound’ likewise.
-- Event Label: It contains details of detection test. When it says ‘div visible..’ means the ad are visible to user and ads are not visible(i.e ad block enabled) when we get ‘div hidden..’
-- Event count is unique no of event count and event value is number of attempts we made to make sure consistency and reach definitive conclusion.
+..*Event Category is ‘Detect’ which means it’s a detection event.
+..*Event action: Its ‘Found’ in case of ad block is present/enabled and ‘NotFound’ likewise.
+..*Event Label: It contains details of detection test. When it says ‘div visible..’ means the ad are visible to user and ads are not visible(i.e ad block enabled) when we get ‘div hidden..’
+..*Event count is unique no of event count and event value is number of attempts we made to make sure consistency and reach definitive conclusion.
 
 ###### Inline
 This is the recommended method of inclusion.  The functions contained in the chosen detection script should be included directly into the HTML of the parent frame.  
