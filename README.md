@@ -24,18 +24,22 @@ Download the desired detection script and add it to your website. There are a fe
 
 With AdBlockDetectionWithGA.js you are asked to mention your GA tracking id into the script on line no 82. When you are referencing this script, it tracks certain events regarding AdBlock on user browser. You can view the details in the Google Analytics dashboard. Here is how to check whether user are using any adblock or not.
 
-- Sign into your Google Analytics account -> Go to your site -> Go to “Reporting” tab -> click “User Explorer” under Audience
-- Now from the List of users click any of it -> click on “Expand All” tab. This will show you all data/Event reported from user browser.
+Firstly, we would suggest you create a different GA-Tracking id so that it might not interfere with your pageviews. Follow below steps for GA on Use of Adblock. 
  
-![alt text](https://s3.amazonaws.com/iab-tech-lab/images/eventfound.png "Event Found")
-![alt text](https://s3.amazonaws.com/iab-tech-lab/images/eventnotfound.png "Event Not Found")
- 
-**How to comprehend the data you see here?**
-- There are two type of events -> ‘NotFound’ and ‘Found’. Where NotFound is fired when any ad blocking software is not found and Found is fired like wise.
-- Event Category is ‘Detect’ which means it’s a detection event.
-- Event action: Its ‘Found’ in case of ad block is present/enabled and ‘NotFound’ likewise.
-- Event Label: It contains details of detection test. When it says ‘div visible..’ means the ad are visible to user and ads are not visible(i.e ad block enabled) when we get ‘div hidden..’
-- Event count is unique no of event count and event value is number of attempts we made to make sure consistency and reach definitive conclusion.
+- Sign into your Google Analytics account -> Go to your site -> Go to “Reporting” tab -> click “User Explorer” under Audience.
+- Click on “Add new segment” -> “New Segment” -> Give Segment name (ex: ‘Adblock Detected’) -> Click on “conditions” under Advanced section.
+- Click on Sessions and select Users (You can create a different one for sessions too.) 
+- Click on the first Drop Down -> Click on “Behavior” ->Select “Event Label”.
+- Click On the Text box: Type event label as below.
+- Event Label- “div hidden” – this will give you all users with Ad block enable/found.Now your one segment with Users who use ad block is ready. 
+- Repeat all above steps with Below event label for users who do not use ad block. 
+- Event Label- “div visible” –this will give you all users with ad block disabled/notfound.
+
+Unfortunately we have not figured out yet how to put it to dash board. So next time when you go to GA, you can go to User Explorer -> click Add new segment. And you will find the segments you previously created(i.e one for adblock Detected users and one for ad block NotDetected users.). You can select them and click on apply to see reported data.
+
+It should look like below image.
+
+![alt text](https://s3.amazonaws.com/iab-tech-lab/images/ga.png "GA User Explorer")
 
 ###### Inline
 This is the recommended method of inclusion.  The functions contained in the chosen detection script should be included directly into the HTML of the parent frame.  
@@ -114,27 +118,6 @@ Add below code in the body of the HTML page
 <h5 class="bg-danger" id="adb-enabled" style="display: none;">AdBlock is enabled</h5>
 </div>
 ```
-
-# Setting up Google Analytics
-If you are using Google Anaytics, you can set up the user's view as below.
-Firstly, we would suggest you create a different GA-Tracking id so that it might not interfere with your pageviews.
-
-Follow this steps for Analytics on Use of Adblock. 
- 
-- Sign into your Google Analytics account -> Go to your site -> Go to “Reporting” tab -> click “User Explorer” under Audience.
-- Click on “Add new segment” -> “New Segment” -> Give Segment name (ex: ‘Adblock Detected’) -> Click on “conditions” under Advanced section.
-- Click on Sessions and select Users (You can create a different one for sessions too.) 
-- Click on the first Drop Down -> Click on “Behavior” ->Select “Event Label”.
-- Click On the Text box: Type event label as below.
-- Event Label- “div hidden” – this will give you all users with Ad block enable/found.Now your one segment with Users who use ad block is ready. 
-- Repeat all above steps with Below event label for users who do not use ad block. 
-- Event Label- “div visible” –this will give you all users with ad block disabled/notfound.
-
-Unfortunately we have not figured out yet how to put it to dash board. So next time when you go to GA, you can go to User Explorer -> click Add new segment. And you will find the segments you previously created(i.e one for adblock Detected users and one for ad block NotDetected users.). You can select them and click on apply to see reported data.
-
-It should look like this.
-
-![alt text](https://s3.amazonaws.com/iab-tech-lab/images/ga.png "GA User Explorer")
 
 # Contributing
 Fork it!
