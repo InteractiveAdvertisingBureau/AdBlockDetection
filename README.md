@@ -1,7 +1,7 @@
-#Introduction
+# Introduction
 Javascript to detect the presence of behavior associated with ad blocking during delivery of a page.
 
-#Operation
+# Operation
 The JavaScript (adblockDetector.js) has been tested to detect the behaviors associated with ad blocking in the following web browsers:
 - Google Chrome
 - Mozilla Firefox
