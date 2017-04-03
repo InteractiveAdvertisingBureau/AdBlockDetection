@@ -115,6 +115,27 @@ Add below code in the body of the HTML page
 </div>
 ```
 
+# Setting up Google Analytics
+If you are using Google Anaytics, you can set up the user's view as below.
+Firstly, we would suggest you create a different GA-Tracking id so that it might not interfere with your pageviews.
+
+Follow this steps for Analytics on Use of Adblock. 
+ 
+- Sign into your Google Analytics account -> Go to your site -> Go to “Reporting” tab -> click “User Explorer” under Audience.
+- Click on “Add new segment” -> “New Segment” -> Give Segment name (ex: ‘Adblock Detected’) -> Click on “conditions” under Advanced section.
+- Click on Sessions and select Users (You can create a different one for sessions too.) 
+- Click on the first Drop Down -> Click on “Behavior” ->Select “Event Label”.
+- Click On the Text box: Type event label as below.
+- Event Label- “div hidden” – this will give you all users with Ad block enable/found.Now your one segment with Users who use ad block is ready. 
+- Repeat all above steps with Below event label for users who do not use ad block. 
+- Event Label- “div visible” –this will give you all users with ad block disabled/notfound.
+
+Unfortunately we have not figured out yet how to put it to dash board. So next time when you go to GA, you can go to User Explorer -> click Add new segment. And you will find the segments you previously created(i.e one for adblock Detected users and one for ad block NotDetected users.). You can select them and click on apply to see reported data.
+
+It should look like this.
+
+![alt text](https://s3.amazonaws.com/iab-tech-lab/images/ga.png "GA User Explorer")
+
 # Contributing
 Fork it!
 Create your feature branch: git checkout -b my-new-feature
