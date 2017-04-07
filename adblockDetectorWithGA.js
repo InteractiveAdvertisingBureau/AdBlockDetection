@@ -746,7 +746,7 @@
 	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 	  ga('create', ga_code, 'auto');
-	  ga('send', 'pageview');
+	  //ga('send', 'pageview');
 	}
 
 
