@@ -63,7 +63,7 @@
 (function(win) {
 
 	var ENABLE_GOOGLE_TAG_MANAGER = true;
-	//var GA_TRACKING_ID = ''; // sample for http://adblockdetector.emination.com/
+	var DATA_LAYER_NAME = 'dataLayer'; //Change this if you use a non-default name for the data layer
 	var googleTagManager = {}; // later initialized
 
 	// Credit to Easylist https://easylist.adblockplus.org/en/
@@ -703,16 +703,14 @@
 				return;
 			}
 
-			dataLayer.push({
+			window[DATA_LAYER_NAME].push({
 				'event': 'adblockDetection',
 				'adblockValues': {
 					'found': found,
 					'triggerFound': triggerFound,
 					'attemptNum': attemptNum
 				}
-			})
-			
-			//ga('send', 'event', category, action, label, value);
+			});
 		},
 
 		blockerDetected: function(triggerFound, attemptNum){
@@ -725,27 +723,5 @@
 			googleTagManager.recordEvent(k.NOT_FOUND, triggerFound, attemptNum);
 		}
 
-	}
-
-
-	/*
-	// Addition of Analytics
-	function initAnalytics(ga_code){
-
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-	  ga('create', ga_code, 'auto');
-	  //ga('send', 'pageview');
-	}
-
-
-	// init analytics inline
-	if(ENABLE_ANALYTICS){
-		initAnalytics(GA_TRACKING_ID);
-	}
-	*/
-
+	};
 })(window)
