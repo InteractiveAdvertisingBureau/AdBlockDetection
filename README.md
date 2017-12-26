@@ -21,11 +21,11 @@ Download the desired detection script and add it to your website. There are a fe
 | ------------- |:-------------:|
 | adblockDetector.js     | Adblocker detection script without Google Analytics module | 
 | adblockDetectorWithGA.js     | Adblocker detection script with Google Analytics module | 
-
-
-With AdBlockDetectionWithGA.js you are asked to mention your GA tracking id into the script on line no 82. When you are referencing this script, it tracks certain events regarding AdBlock on user browser. You can view the details in the Google Analytics dashboard. Here is how to check whether user are using any adblock or not.
+| adblockDetectorWithGTM.js     | Adblocker detection script with Google Tag Manager module |
 
 ###### Setting up Google Analytics
+With `adblockDetectorWithGA.js` you are asked to mention your GA tracking id into the script on line no 82. When you are referencing this script, it tracks certain events regarding AdBlock on user browser. You can view the details in the Google Analytics dashboard. Here is how to check whether user are using any adblock or not.
+
 Firstly, we would suggest you create a different GA-Tracking id so that it might not interfere with your pageviews. Follow below steps for GA on Use of Adblock. 
  
 - Sign into your Google Analytics account -> Go to your site -> Go to “Reporting” tab -> click “User Explorer” under Audience.
@@ -42,6 +42,38 @@ Unfortunately we have not figured out yet how to put it to dash board. So next t
 It should look like below image.
 
 ![alt text](https://s3.amazonaws.com/iab-tech-lab/images/ga.png "GA User Explorer")
+
+###### Setting up Google Tag Manager
+With `adblockDetectorWithGTM.js` you are asked to define the name of your data 
+layer. In most cases you should be able to use the default `dataLayer` value 
+used in standard Google Tag Manager implementations. The script will then push 
+an event to the data layer every time the adblock detection process has been 
+completed.
+
+The format of the push to the data layer looks something like:
+
+```javascript
+dataLayer.push({
+	'event': 'adblockDetection',
+	'adblockValues': {
+		'found': 'Found',
+		'triggerFound': 'div hidden with attribute: null attr-offsetParent',
+		'attemptNum': 5
+	}
+})
+```
+
+To take advantage of this within Google Tag Manager, you should:
+- Create a trigger that fires when the Event variable equals `adblockDetection`
+- Create a data layer variable to hold the `adblockValues` values. You can 
+access the subcomponents using dot notation. For example, if you name the 
+variable `adblockValues`, you can use the following calls in your tags:
+  - `{{adblockValues}}.found`
+  - `{{adblockValues}}.triggerFound`
+  - `{{adblockValues}}.attemptNum`
+- Create a tag to do something (e.g. send to Google Analytics, send to an API 
+endpoint, etc.) with the information
+
 
 ###### Inline
 This is the recommended method of inclusion.  The functions contained in the chosen detection script should be included directly into the HTML of the parent frame.  
