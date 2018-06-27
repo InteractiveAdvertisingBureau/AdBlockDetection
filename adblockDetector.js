@@ -256,7 +256,16 @@
 			dom.addEventListener(eventName, handler, false);
 		}
 	}
-	
+	function rmEventListener(dom, eventName, handler){
+		if(isOldIEevents){
+			dom.detachEvent('on' + eventName, handler);
+		}
+		else{
+			dom.removeEventListener(eventName, handler, false);
+		}
+	}
+
+
 	function log(message, isError){
 		if(!_options.debug && !isError){
 			return;
@@ -566,19 +575,23 @@
 		var fn;
 		
 		if(document.readyState){
-			if(document.readyState == 'complete'){
+			console.log(document.readyState);
+			if(document.readyState == 'complete'||document.readyState == 'interactive'){
 				fireNow = true;
 			}
 		}
 		
 		fn = function(){
 			beginTest(quickBait, false);
+			rmEventListener(win, 'DOMContentLoaded', fn);
+			rmEventListener(win, 'load', fn);
 		}
 		
 		if(fireNow){
 			fn();
 		}
 		else{
+			attachEventListener(win, 'DOMContentLoaded', fn);
 			attachEventListener(win, 'load', fn);
 		}
 	}
