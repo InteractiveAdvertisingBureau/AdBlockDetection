@@ -575,7 +575,7 @@
 		var fn;
 		
 		if(document.readyState){
-			console.log(document.readyState);
+			log(document.readyState);
 			if(document.readyState == 'complete'||document.readyState == 'interactive'){
 				fireNow = true;
 			}
